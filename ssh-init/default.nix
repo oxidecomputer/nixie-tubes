@@ -17,6 +17,7 @@
   config = lib.mkIf config.services.oxide-ssh-init.enable {
     systemd.services.oxide-ssh-init = {
       description = "Add SSH keys from the Oxide cidata volume or EC2 IMDS";
+      # `script` takes a string and adds a bash shebang and `set -e` to it.
       script = builtins.readFile ./ssh-init.sh;
       path = with pkgs; [ coreutils curl jq mtools ];
 

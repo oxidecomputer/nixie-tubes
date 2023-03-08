@@ -2,7 +2,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+# `systemd.services.<name>.script` adds a bash shebang.
 # shellcheck shell=bash
+
+# `set -e` is added by `systemd.services.<name>.script`, but list it here and
+# set some other options so my brain goes into Serious Bash Mode.
+set -euo pipefail
 
 umask 0077
 mkdir -p /root/.ssh
